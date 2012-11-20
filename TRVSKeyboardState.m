@@ -37,6 +37,8 @@
     [defaultCenter addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
     [defaultCenter addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
     self.hidden = YES;
+    self.keyboardDidHideBlock = nil;
+    self.keyboardDidShowBlock = nil;
     
     return self;
 }
@@ -44,11 +46,19 @@
 - (void)keyboardDidShow:(NSNotification *)notification
 {
     self.hidden = NO;
+    if (self.keyboardDidShowBlock){
+        self.keyboardDidShowBlock();
+        self.keyboardDidShowBlock = nil;
+    }
 }
 
 - (void)keyboardDidHide:(NSNotification *)notification
 {
     self.hidden = YES;
+    if (self.keyboardDidHideBlock){
+        self.keyboardDidHideBlock();
+        self.keyboardDidHideBlock = nil;
+    }
 }
 
 @end
