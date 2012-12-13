@@ -1,7 +1,7 @@
 # TRVSKeyboardState
 
 A small little helper object to check whether the keyboard is showing or
-hidden. 
+hidden. And set/run blocks when the keyboard is shown or hidden.
 
 ### Usage
 
