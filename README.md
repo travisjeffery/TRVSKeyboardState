@@ -35,6 +35,21 @@ else
 	// do something else because the keyboard is showing
 ```
 
+And you're able to set blocks that run when the keyboard hides/shows:
+
+``` objective-c 
+[TRVSKeyboardState sharedInstance].keyboardDidHideBlock = ^{
+  dispatch_async(dispatch_get_main_queue(), ^{
+      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"TRVSKeyboardState"
+                                                          message:@"Keyboard did hide!"
+                                                         delegate:nil
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
+      [alertView show];
+  });
+};
+```
+
 Check the `Example` app for more in-depth on the usage.
 
 ### Self-Promotion
